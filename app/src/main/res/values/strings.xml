@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aptiture Science Phone Durbility Test </string>
+    <string name="throwingInstructions">Throw this phone at a object to test it\'s durability.</string>
+
+</resources>
