@@ -28,6 +28,7 @@ import androidx.core.content.getSystemService
 import android.net.Uri
 import androidx.compose.ui.viewinterop.AndroidView
 import android.widget.VideoView
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
@@ -70,13 +71,19 @@ fun AppView(
 
     Column(modifier = Modifier.fillMaxSize()) {
         ThrowsTopAppBar(modifier = Modifier)
-        Column {
-            Row {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(horizontalArrangement = Arrangement.Center){
                 Text(stringResource(R.string.throwingInstructions))
             }
 
-            MaxVelocityView()
-            AccelerometerView()
+            Row(horizontalArrangement = Arrangement.Center){
+                MaxVelocityView()
+
+            }
+            Row(horizontalArrangement = Arrangement.Center){
+                AccelerometerView()
+            }
+
         }
 
 

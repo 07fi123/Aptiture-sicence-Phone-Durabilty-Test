@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -25,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.getSystemService
@@ -78,14 +81,11 @@ fun MaxVelocityView() {
         }
     }
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        Column() {
+
             StatusIndicator(maxVelocity)
            // Text("Test Max Velocity: $maxVelocity m/s")
-        }
-    }
+
+
 }
 
 
@@ -97,10 +97,12 @@ fun StatusIndicator(statusValue: Float) {
         else -> Status.SAFE
     }
 
-    Surface(shape = Shapes().medium, modifier = Modifier.defaultMinSize(minWidth = 30.dp).padding(200.dp), color = status.color) {
+    Surface(shape = Shapes().extraLarge, modifier = Modifier.fillMaxHeight(0.5f).padding(10.dp).fillMaxWidth(0.9f), color = status.color) {
         Column(verticalArrangement = Arrangement.Center) {
             Row(horizontalArrangement = Arrangement.Center){
-                Text(text = "Status: ${status.name}", color = Color.Black,)
+                Text(text = "Phone Damage Status", color = Color.DarkGray, textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineLarge)
+                Text(text = "${status.name}", color = Color.DarkGray, textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineLarge )
+
             }
         }
     }
