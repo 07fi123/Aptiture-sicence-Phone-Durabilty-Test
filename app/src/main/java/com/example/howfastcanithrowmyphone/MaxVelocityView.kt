@@ -9,6 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
@@ -23,7 +24,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
@@ -84,8 +87,7 @@ fun MaxVelocityView() {
 
             StatusIndicator(maxVelocity)
            // Text("Test Max Velocity: $maxVelocity m/s")
-
-
+    
 }
 
 
@@ -93,19 +95,17 @@ fun MaxVelocityView() {
 fun StatusIndicator(statusValue: Float) {
     val status = when {
         statusValue > 12.0f -> Status.DESTROYED
-        statusValue > 9.8f -> Status.DAMAGED
+        statusValue > 7.0f -> Status.DAMAGED
         else -> Status.SAFE
     }
 
-    Surface(shape = Shapes().extraLarge, modifier = Modifier.fillMaxHeight(0.5f).padding(10.dp).fillMaxWidth(0.9f), color = status.color) {
-        Column(verticalArrangement = Arrangement.Center) {
-            Row(horizontalArrangement = Arrangement.Center){
+
+    Surface(shape = Shapes().extraLarge, modifier = Modifier.fillMaxHeight(0.5f).padding(10.dp).fillMaxWidth(), color = status.color) {
+        Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Phone Damage Status", color = Color.DarkGray, textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineLarge)
                 Text(text = "${status.name}", color = Color.DarkGray, textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineLarge )
-
             }
         }
-    }
 }
 
 enum class Status(val color: Color) {

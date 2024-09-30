@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Aperture Science Phone Durability Test </string>
-    <string name="throwingInstructions">Throw this phone at a object to test its durability.</string>
+    <string name="throwingInstructions">Throw this phone at a test subject to test the device durability.</string>
 </resources>
